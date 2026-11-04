@@ -1,0 +1,172 @@
+# Student Guide
+
+## What is the Enterprise IT Navigator Project Coach?
+
+The Enterprise IT Navigator Project Coach is an AI-powered simulation that helps you prepare for your ITEC-617 Digital Transformation (DT) team project presentation. Rather than going into your presentation cold, you consult with 9 simulated executive personas who challenge your proposal from different C-suite perspectives, get scored on 9 rubric dimensions with 45 total criteria, and practice mock Q&A -- all before your real presentation to industry judges on April 27, 2026.
+
+The simulation is grounded in the [Enterprise IT Primer](https://leifulstrup.github.io/enterprise-it-primer/), so the executives reference the same frameworks and concepts you are learning in ITEC-617.
+
+## The Executive Personas
+
+Each persona has a distinct personality, priorities, and communication style. They will ask probing questions, push back on vague answers, and provide constructive guidance.
+
+| Persona     | Name             | Title                              | Focus Areas                                      |
+| ----------- | ---------------- | ---------------------------------- | ------------------------------------------------ |
+| CIO         | Jordan Chen      | Chief Information Officer          | IT strategy, governance, enterprise architecture |
+| CISO        | Anika Patel      | Chief Information Security Officer | Cybersecurity, risk, privacy, compliance         |
+| CFO         | Robert Okafor    | Chief Financial Officer            | Financial analysis, ROI, TCO, budget impact      |
+| COO         | Maria Santos     | Chief Operating Officer            | Operations, implementation, pilot design         |
+| CHRO        | David Washington | Chief Human Resources Officer      | Change management, people, culture               |
+| CTO         | Priya Ramanathan | Chief Technology Officer           | Technology, innovation, architecture             |
+| CDO         | Sarah Kim        | Chief Data Officer                 | Data strategy, governance, AI ethics             |
+| Legal       | Jonathan Shapiro | General Counsel                    | Legal, regulatory, IP, compliance                |
+| Procurement | Lisa Fernandez   | VP of Procurement                  | Vendor strategy, contracts, negotiation          |
+
+## How You're "Evaluated"" by the AI Project Coach Panel
+
+<mark>NOTE: This evaluation is intended to provide feedback and simulate how a panel <u>*might*</u> evaluate your presentation. The executive panel you will present to may very well evaluate your team differently.</mark>
+
+Your proposal is evaluated across 9 rubric dimensions. Each dimension contains multiple criteria, and each criterion is scored on a 1-5 scale.
+
+### Rubric Dimensions and Weights
+
+| #   | Dimension                            | Weight | Key Personas  |
+| --- | ------------------------------------ | ------ | ------------- |
+| 1   | Business Case Strength               | 20%    | CFO, COO      |
+| 2   | Technology Selection and Feasibility | 10%    | CTO, CIO      |
+| 3   | Financial Analysis                   | 15%    | CFO           |
+| 4   | Risk and Security Assessment         | 10%    | CISO, Legal   |
+| 5   | Implementation Strategy              | 15%    | COO, CIO, CTO |
+| 6   | Change Management and People         | 10%    | CHRO, COO     |
+| 7   | Data and Analytics                   | 5%     | CDO           |
+| 8   | Vendor and Sourcing Strategy         | 5%     | Procurement   |
+| 9   | Presentation Readiness               | 10%    | All           |
+
+### Scoring Scale
+
+| Score | Label         | Description                                                        |
+| ----- | ------------- | ------------------------------------------------------------------ |
+| 1     | Not Addressed | Topic not mentioned or considered                                  |
+| 2     | Superficial   | Acknowledged but lacks depth or evidence                           |
+| 3     | Adequate      | Reasonable treatment with some supporting evidence                 |
+| 4     | Strong        | Well-developed with evidence, frameworks, and analysis             |
+| 5     | Exceptional   | Comprehensive, nuanced, with creative insights and strong evidence |
+
+### Readiness Levels
+
+Your composite weighted score maps to a readiness level:
+
+| Score Range | Readiness Level  | Meaning                              |
+| ----------- | ---------------- | ------------------------------------ |
+| 90-100%     | Ready to Present | Strong across all dimensions         |
+| 75-89%      | Nearly Ready     | Minor gaps to address                |
+| 60-74%      | Making Progress  | Several areas need deepening         |
+| 40-59%      | Early Stage      | Significant gaps in multiple areas   |
+| 0-39%       | Needs Rethinking | Fundamental issues with the approach |
+
+## Recommended Workflow
+
+Follow this sequence to get the most out of the simulation:
+
+1. **Fill in your project brief.**
+   
+   - Use `/setup-project` (Claude Code) or the **setup-project** prompt (Copilot) to walk through each section interactively.
+   - The setup flow is **milestone-aware** — it detects where you are in the assignment sequence (Team Charter through Final Presentation), adapts its questions to your current stage, and provides guidance specific to your next assignment.
+   - If you have completed prior assignments, drop copies of your deliverables (PDFs, DOCXs) into `student-workspace/source-docs/` before running setup — the AI will extract relevant context and skip questions you have already answered.
+   - For ROI and OCM work, dedicated templates are available at `student-workspace/roi-summary.md` and `student-workspace/ocm-assessment.md`.
+   - You can also open `student-workspace/project-brief.md` and complete sections manually. The more detail you provide, the better the executive feedback.
+
+2. **Start the simulation.** Run the start simulation prompt to get an analysis of your project brief, an assessment of strengths and gaps, and a recommended sequence of executive personas to consult.
+
+3. **Consult executive personas.** Begin with the three essential executives -- CIO, CFO, and CISO -- then follow the simulation's personalized recommendations. Each persona conversation works best when you come with specific questions and are prepared to defend your proposal.
+
+4. **Evaluate your proposal.** After 3-4 persona consultations, run the evaluation prompt to see your scores across all 9 dimensions. This shows you exactly where you stand and where to focus next.
+
+5. **Address gaps.** Based on your evaluation, consult the personas who cover your lowest-scoring dimensions. Update your project brief as your thinking evolves.
+
+6. **Prepare your presentation.** Build your PowerPoint slides and fill in `student-workspace/presentation-notes.md` with your slide-by-slide notes and talking points.
+
+7. **Get slide-by-slide feedback on your PowerPoint.** Once you have a draft, the AI can read your slides directly.
+
+   > **Path A (Cowork) — Recommended**: Drag your `.pptx` or `.pdf` file into the Cowork chat and say: *"Please save a copy of this to student-workspace/slides/ and give me slide-by-slide feedback."* Claude reads your slides directly — no extraction script needed.
+
+   > **Path B (Copilot) / Path C (Claude Code)**: Place a **copy** of your `.pptx` file in `student-workspace/slides/` and run the extraction script:
+   > ```
+   > uv run extract_presentation.py
+   > ```
+   > Also export your presentation as PDF (File > Export > PDF) and save it in the same folder for visual chart and layout feedback. Claude Code can also read `.pptx` and `.pdf` files directly without the extraction step.
+
+   > **Don't have Python or uv? (Path B/C only)** Install Python 3.12+ from [python.org/downloads](https://www.python.org/downloads/) and uv from [docs.astral.sh/uv](https://docs.astral.sh/uv/getting-started/installation/). This step is optional — the AI can still evaluate your project based on your brief without extracting slides.
+
+   > **Protect your work.** Always keep your original PowerPoint in a separate folder (e.g., your Desktop or OneDrive). Make a habit of saving backups before each AI feedback session.
+
+8. **Get slide-by-slide feedback.** Now when you consult personas or run evaluation, they will provide feedback on your *actual slides* — identifying which slides are strong, which need work, and what's missing from your presentation. AI-generated defense materials (judge Q&A, cheat sheets, speaker splits) land in `student-workspace/source-docs/presentation-support/`.
+
+9. **Practice mock Q&A.** Run the presentation prep prompt, which simulates a panel of industry judges asking tough questions based on your actual slide content and weakest areas. This is the closest practice you will get to the real thing.
+
+10. **Get next steps.** Run the next-steps prompt for a prioritized improvement plan with specific frameworks, primer references, and slide-level recommendations.
+
+11. **Iterate.** Continue refining your slides and re-running extraction + evaluation until your readiness score reaches 75% or higher. Teams that reach "Nearly Ready" or above tend to perform well with industry judges.
+
+## Three Ways to Access the Simulation
+
+The Enterprise IT Navigator works with three different AI tools. All three provide the same executive personas, rubrics, and evaluation capabilities — the difference is in how you set them up and interact with them.
+
+| Path  | Tool                     | Best for                                                                    | Setup guide                                                |
+| ----- | ------------------------ | --------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **A** | Claude Cowork (desktop)  | **Most students** — Claude Pro, no Git, no terminal, no extensions required | [QUICKSTART-CLAUDE-COWORK.md](QUICKSTART-CLAUDE-COWORK.md) |
+| **B** | VS Code + GitHub Copilot | Students who already have GitHub Education (free Copilot Pro)               | [QUICKSTART-COPILOT.md](QUICKSTART-COPILOT.md)             |
+| **C** | Claude Code (CLI)        | Students with Claude Pro comfortable with a terminal                        | [QUICKSTART-CLAUDE-CODE.md](QUICKSTART-CLAUDE-CODE.md)     |
+
+**Path A (Claude Cowork) is the recommended starting point** for students who have not previously used Git or VS Code. It requires only the Claude desktop app and a Claude Pro subscription.
+
+See the appropriate quickstart guide for your chosen path. All setup instructions, including how to download the repository and collaborate as a team, are in those documents.
+
+## Enterprise IT Primer
+
+The simulation is grounded in the [Enterprise IT Primer](https://leifulstrup.github.io/enterprise-it-primer/). The `primer/` directory in this repository contains 16 reference sections covering the full breadth of enterprise IT topics, plus consolidated industry judge advice:
+
+| #   | Section                     | Key Topics                                                     |
+| --- | --------------------------- | -------------------------------------------------------------- |
+| 01  | IT Governance Frameworks    | COBIT, ITIL, decision rights, governance structures            |
+| 02  | C-Suite IT Roles            | CIO, CTO, CISO, CDO roles and responsibilities                 |
+| 03  | IT Budgeting and Finance    | Run/Grow/Transform, CapEx vs. OpEx, IT cost structures         |
+| 04  | Build vs. Buy vs. Subscribe | Sourcing decisions, evaluation criteria, trade-offs            |
+| 05  | Cloud Computing             | IaaS, PaaS, SaaS, deployment models, shared responsibility     |
+| 06  | Enterprise Applications     | ERP, CRM, SCM, integration patterns                            |
+| 07  | Open Source Software        | OSS licensing, community models, enterprise adoption           |
+| 08  | Cybersecurity Governance    | NIST CSF, threat modeling, zero trust, incident response       |
+| 09  | Data Governance             | Data quality, stewardship, privacy, master data management     |
+| 10  | Shadow IT                   | Risks, detection, governance approaches                        |
+| 11  | Digital Transformation      | Transformation strategy, maturity models, success factors      |
+| 12  | AI and Emerging Technology  | AI/ML, blockchain, IoT, technology readiness levels            |
+| 13  | Innovation Management       | Innovation pipelines, experimentation, scaling                 |
+| 14  | Vendor Management           | Kraljic Matrix, SLAs, contract negotiation, vendor risk        |
+| 15  | Project Management          | Agile, Waterfall, hybrid, project governance                   |
+| 16  | Industry Judge Advice       | 10 recurring themes from 4 years of judge feedback (2021-2024) |
+
+Executive personas will reference specific frameworks from these sections and weave in insights from past industry judges. Studying the primer before consulting with executives will help you engage more effectively and give stronger answers.
+
+## Tips for Success
+
+**Be specific.** Vague statements like "we will improve efficiency" or "this will reduce costs" will get immediate pushback from the executives. Use numbers, percentages, timeframes, and concrete examples. If you say "significant cost savings," the CFO will ask "how much, exactly?"
+
+**Use frameworks from the primer.** Executives respond well when you demonstrate fluency with analytical frameworks. Reference the Kraljic Matrix when discussing vendor strategy, apply Kotter's 8-step model for change management, use NIST CSF for your security assessment, and cite Technology Readiness Levels when evaluating technology maturity.
+
+**Prepare financial numbers.** Every proposal needs an ROI calculation, total cost of ownership (TCO) analysis, and payback period -- with clearly stated assumptions. The CFO will scrutinize every number, so know your sources and be ready to defend your estimates.
+
+**Think about security and compliance from the start.** Do not treat cybersecurity, privacy, and regulatory compliance as an afterthought or a slide you add at the end. The CISO and General Counsel will test whether you have genuinely considered threats, privacy requirements (GDPR, CCPA, HIPAA), and applicable regulations.
+
+**Have a real change management plan.** "We will train people" is not a change management plan. Identify affected stakeholders, assess organizational readiness, design a communication strategy, and plan for resistance. The CHRO will push you on this.
+
+**Know your vendor strategy and exit plan.** If you are proposing a vendor solution, be ready to explain how you evaluated alternatives, what your lock-in mitigation strategy is, what SLAs you would negotiate, and what happens when the contract ends.
+
+**Practice your 10-minute presentation timing.** Ten minutes goes by quickly. Know exactly what you need to cover on each slide and practice transitions. Cut anything that does not directly support your argument.
+
+**Prepare for tough Q&A questions.** The industry judges will have 2-3 minutes to ask questions after your presentation. The executive personas in this simulation will help you anticipate exactly what those questions will be -- and practice answering them under pressure.
+
+**Update your project brief as you learn.** Your brief is a living document. After each persona consultation, go back and update sections that need strengthening. The executives can only challenge what you have written down.
+
+**Run link validation as a quality check (Path B/C only).** If you move or rename files, run `uv run scripts/validate_markdown_links.py --root .` to catch any broken internal links before sharing your work. Cowork users can skip this step.
+
+**Start early and iterate.** Teams that use the simulation once the week before the presentation get limited benefit. Teams that start early, iterate multiple times, and systematically address gaps achieve the strongest results.
